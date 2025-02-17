@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize'); // Import Sequelize correctly
 
 // Initialize Sequelize with your database credentials
-const sequelize = new Sequelize('Path_db', 'postgres', 'admin123', {
+const sequelize = new Sequelize('path_trekking', 'postgres', 'admin123', {
   host: 'localhost',
   dialect: 'postgres',
   port: 5433,

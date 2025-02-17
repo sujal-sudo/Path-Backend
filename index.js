@@ -1,22 +1,30 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const sequelize = require('./Database/Path_db');
-
-
-// creating a server
+import express from "express";  // ✅ Use import instead of require
+import cors from "cors";
+import bodyParser from "body-parser";
+import sequelize from "./database/path_trekking.js";
+import trekRoutes from "./routes/trekRoutes.js";  // ✅ Ensure correct import path
 
 const app = express();
-
-// setting up the server port
 const port = process.env.PORT || 5000;
 
-// middleware
+// Middleware
 app.use(cors());
+app.use(express.json());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-// Running on port
+// Sync models with database
+sequelize.sync({ alter: true })
+  .then(() => console.log("✅ Database & tables synced"))
+  .catch((err) => console.error("❌ Error syncing database:", err));
+
+// Routes
+app.use("/api/treks", trekRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Trek Management API is Running!");
+});
+
+// Start Server
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+  console.log(`🚀 Server running on http://localhost:${port}`);
 });
