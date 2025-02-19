@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../Database/path_trekking"); // Use sequelize instance
+const sequelize = require("../Database/path_trekking"); // Ensure this path is correct
 
 const User = sequelize.define(
   "User",
@@ -17,17 +17,12 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      // validate: {
-      // isEmail: true, // Ensures valid email format
-      // }
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
   },
-
 );
 
 module.exports = User;

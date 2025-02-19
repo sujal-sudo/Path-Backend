@@ -1,7 +1,7 @@
 import express from "express";  // Use ES6 imports
 import cors from "cors";
 import bodyParser from "body-parser";
-import sequelize from "./Database/path_trekking.js";  // Ensure correct import path
+import sequelize from "./Database/path_trekking.js"; // Use .js extension  // Ensure correct import path
 import trekRoutes from "./routes/trekRoutes.js";       // Ensure correct import path
 import authRoutes from "./routes/authRoutes.js";       // Import authentication routes
 import dotenv from "dotenv";                            // Import dotenv for environment variables
